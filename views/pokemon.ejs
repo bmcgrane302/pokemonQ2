@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+ <html>
+   <head>
+     <meta charset="utf-8">
+     <title></title>
+   </head>
+   <body>
+     <h1>Create Pokemon</h1>
+
+     <form action="" method="post">
+       <input type="text" name="name" placeholder="Name">
+       <input type="text" name="cp" placeholder="CP">
+       <input type="text" name="trainer_id" placeholder="Trainer">
+
+       <input type="submit" value="Create">
+     </form>
+
+     <h1>ALL POKEMON</h1>
+
+     <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>CP</th>
+          <th>Trainer</th>
+          <th>In Gym</th>
+        </tr>
+      </thead>
+      <tbody>
+          <% for(let i = 0; i<pokemonList.length; i++){ %>
+            <tr>
+              <td><%= pokemonList[i].name %></td>
+              <td><%= pokemonList[i].cp %></td>
+              <td><%= pokemonList[i].trainer_id %></td>
+              <td><%= pokemonList[i].in_gym %></td>
+              <td><button type="button" name="button"><a href="/delete/<%=pokemonList[i].id%>">Delete</a></button></td>
+
+            </tr>
+          <% } %>
+        </tbody>
+
+    </table>
+
+   </body>
+ </html>
