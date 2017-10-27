@@ -38,7 +38,32 @@ module.exports = {
         console.error(err);
       });
 
-  }
+  },
+
+  getOne: function(req, res){
+    knex('pokemon')
+      .where('id', req.params.id)
+      .then((result)=>{
+         console.log(result);
+        res.render('update', {poke: result[0]});
+      });
+  },
+
+  update: function(req, res){
+    knex('pokemon')
+    .update({
+      name: req.body.name,
+      cp: req.body.cp,
+      trainer_id: req.body.trainer_id,
+      in_gym: false
+    })
+    .where('id', req.params.id)
+    .then(()=>{
+      res.redirect('/');
+    })
+  },
+
+   
 
 
 

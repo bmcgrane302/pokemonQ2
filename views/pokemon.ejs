@@ -33,6 +33,7 @@
               <td><%= pokemonList[i].cp %></td>
               <td><%= pokemonList[i].trainer_id %></td>
               <td><%= pokemonList[i].in_gym %></td>
+              <td><button type="button" name="button"><a href="/update/<%=pokemonList[i].id%>">Edit</a></button></td>
               <td><button type="button" name="button"><a href="/delete/<%=pokemonList[i].id%>">Delete</a></button></td>
 
             </tr>

@@ -5,13 +5,16 @@
     <title></title>
   </head>
   <body>
+    <h1><%= poke.name %></h1>
+     
 
-    <form action="" method="post">
-      <input type="text" name="name" placeholder="Name" value="">
-      <input type="text" name="cp" placeholder="CP" value="">
-      <input type="text" name="trainer_id" placeholder="Trainer" value="">
 
-      <input type="submit" value="Create">
+    <form action="/update/<%=poke.id %>" method="post">
+      <input type="text" name="name" value="<%= poke.name %>">
+      <input type="text" name="cp" value="<%= poke.cp %>">
+      <input type="text" name="trainer_id" value="<%= poke.trainer_id %>">
+
+      <input type="submit" value="update">
     </form>
 
   </body>
