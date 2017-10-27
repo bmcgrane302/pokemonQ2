@@ -8,7 +8,7 @@ module.exports = function(app){
 
   app.get('/update/:id', pokemon.getOne);
 
-  //app.get('/profile/:id', pokemon.profile);
+  app.get(`/profile/:id`, pokemon.profile);
 
   app.get(`/delete/:id`, pokemon.del);
 

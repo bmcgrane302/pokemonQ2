@@ -44,7 +44,7 @@ module.exports = {
     knex('pokemon')
       .where('id', req.params.id)
       .then((result)=>{
-         console.log(result);
+
         res.render('update', {poke: result[0]});
       });
   },
@@ -63,8 +63,20 @@ module.exports = {
     })
   },
 
-   
+  profile: function(req, res){
+    knex('pokemon')
+      .where('id', req.params.id)
+      .then((result)=>{
+        console.log(result);
+        knex('trainers')
+          .where('id', result[0].trainer_id)
+          .then((trainerResult)=>{
+                console.log(result[0].trainer_id);
+           res.render('profile', {poke: result[0], trainer: trainerResult[0]});
+          })
 
+      });
+    }
 
 
 }

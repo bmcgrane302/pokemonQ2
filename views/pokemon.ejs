@@ -11,7 +11,9 @@
        <input type="text" name="name" placeholder="Name">
        <input type="text" name="cp" placeholder="CP">
        <input type="text" name="trainer_id" placeholder="Trainer">
-
+       <select name=“trainer_id” required>
+       
+     </select>
        <input type="submit" value="Create">
      </form>
 
@@ -29,7 +31,7 @@
       <tbody>
           <% for(let i = 0; i<pokemonList.length; i++){ %>
             <tr>
-              <td><%= pokemonList[i].name %></td>
+              <td><a href="/profile/<%=pokemonList[i].id%>"><%= pokemonList[i].name %></a></td>
               <td><%= pokemonList[i].cp %></td>
               <td><%= pokemonList[i].trainer_id %></td>
               <td><%= pokemonList[i].in_gym %></td>
