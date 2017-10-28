@@ -6,6 +6,8 @@ module.exports = function(app){
 
   app.get('/pokemon', pokemon.allPokemon);
 
+  app.get('/create', pokemon.createPoke);
+
   app.get('/update/:id', pokemon.getOne);
 
   app.get(`/profile/:id`, pokemon.profile);
@@ -13,7 +15,7 @@ module.exports = function(app){
   app.get(`/delete/:id`, pokemon.del);
 
 
-  app.post('/pokemon', pokemon.create);
+  app.post('/createone', pokemon.create);
 
   app.post('/update/:id', pokemon.update);
 

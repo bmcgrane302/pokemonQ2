@@ -14,6 +14,13 @@ module.exports = {
       })
   },
 
+  createPoke: function(req, res){
+    knex('trainers')
+    .then((result)=>{
+      res.render('create', {trainer: result});
+    })
+  },
+
   create: function(req, res){
     knex('pokemon')
      .insert({
