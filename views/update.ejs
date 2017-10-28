@@ -6,13 +6,20 @@
   </head>
   <body>
     <h1><%= poke.name %></h1>
-     
+
 
 
     <form action="/update/<%=poke.id %>" method="post">
       <input type="text" name="name" value="<%= poke.name %>">
       <input type="text" name="cp" value="<%= poke.cp %>">
-      <input type="text" name="trainer_id" value="<%= poke.trainer_id %>">
+
+      <select  name="trainer_id" required>
+         <% for(let i=0; i<trainer.length; i++){ %>
+           <option value="<%= trainer[i].id %>"  >
+             <%= trainer[i].name %></option>
+         <% } %>
+         <option selected value=""><%= poke.trainer_id %></option>
+       </select>
 
       <input type="submit" value="update">
     </form>

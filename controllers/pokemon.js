@@ -52,22 +52,12 @@ module.exports = {
       .where('id', req.params.id)
       .then((result)=>{
 
-        res.render('update', {poke: result[0]});
+        knex('trainers')
+        
+          .then((trainerResult)=>{
+          res.render('update', {poke: result[0], trainer: trainerResult});
+          })
       });
-  },
-
-  update: function(req, res){
-    knex('pokemon')
-    .update({
-      name: req.body.name,
-      cp: req.body.cp,
-      trainer_id: req.body.trainer_id,
-      in_gym: false
-    })
-    .where('id', req.params.id)
-    .then(()=>{
-      res.redirect('/');
-    })
   },
 
   profile: function(req, res){
@@ -83,7 +73,23 @@ module.exports = {
           })
 
       });
-    }
+    },
+
+  update: function(req, res){
+    knex('pokemon')
+    .update({
+      name: req.body.name,
+      cp: req.body.cp,
+      trainer_id: req.body.trainer_id,
+      in_gym: false
+    })
+    .where('id', req.params.id)
+    .then(()=>{
+      res.redirect('/');
+    })
+  },
+
+
 
 
 }
