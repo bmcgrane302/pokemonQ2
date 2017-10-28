@@ -51,11 +51,18 @@ module.exports = {
     knex('pokemon')
       .where('id', req.params.id)
       .then((result)=>{
-
         knex('trainers')
-        
           .then((trainerResult)=>{
-          res.render('update', {poke: result[0], trainer: trainerResult});
+            let currentTrainer = [];
+            for(let i = 0; i < trainerResult.length; i++){
+              if(trainerResult[i].id === result[0].trainer_id){
+                currentTrainer = trainerResult.splice(i, 1);
+
+              }
+
+            }
+            console.log(currentTrainer);
+          res.render('update', {poke: result[0], trainer: trainerResult, current: currentTrainer[0]});
           })
       });
   },

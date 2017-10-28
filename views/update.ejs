@@ -18,7 +18,7 @@
            <option value="<%= trainer[i].id %>"  >
              <%= trainer[i].name %></option>
          <% } %>
-         <option selected value=""><%= poke.trainer_id %></option>
+         <option selected value="<%= current.id %>"><%= current.name %></option>
        </select>
 
       <input type="submit" value="update">
