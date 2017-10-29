@@ -7,5 +7,45 @@
   <body>
     <h1>GYM</h1>
 
+    <form action="" method=" ">
+      <h3>Player 1</h3>
+      <select name="name" required>
+         <% for(let i=0; i<pokelist.length; i++){ %>
+           <option value="<%= pokelist[i].id %>">
+             <%= pokelist[i].name %></option>
+         <% } %>
+
+       </select>
+
+      <input type="submit" value="Put In Gym">
+    </form>
+    <br>
+    <form action="" method=" ">
+      <h3>Player 2</h3>
+      <select name="name" required>
+         <% for(let i=0; i<pokelist.length; i++){ %>
+           <option value="<%= pokelist[i].id %>">
+             <%= pokelist[i].name %></option>
+         <% } %>
+       </select>
+
+      <input type="submit" value="Put In Gym">
+    </form>
+
+    <% for(let i = 0; i < pokelist.length; i++){ %>
+    <%  if(parseInt(gym[0]) === pokelist[i].id){ %>
+       <h2>PLAYER 1: <%= pokelist[i].name %></h2>
+
+    <% } %>
+    <% } %>
+     <br>
+     <% for(let i = 0; i < pokelist.length; i++){ %>
+     <%  if(parseInt(gym[1]) === pokelist[i].id){ %>
+        <h2>PLAYER 2: <%= pokelist[i].name %></h2>
+
+     <% } %>
+     <% } %>
+
+
   </body>
 </html>

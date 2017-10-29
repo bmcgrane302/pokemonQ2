@@ -8,7 +8,7 @@
 
      <button type="button" name="button"><a href="/create">Create A New Pokemon</a></button>
      <button type="button" name="button"><a href="/trainers">See All Trainers</a></button>
-      <button type="button" name="button"><a href="">Gym</a></button>
+      <button type="button" name="button"><a href="/gym">Gym</a></button>
 
 
 
@@ -34,7 +34,7 @@
               <td><%= pokemonList[i].trainer_id %></td>
               <td><%= pokemonList[i].in_gym %></td>
 
-            <% if(!pokemonList[i].in_gym && gym.length < 3){ %>
+            <% if(!pokemonList[i].in_gym && gym.length < 2){ %>
               <td> <a href="/addToGym/<%=pokemonList[i].id%>">
                 add to gym</a></td>
                <% } else if (!pokemonList[i].in_gym){ %>
