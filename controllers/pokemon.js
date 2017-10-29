@@ -3,14 +3,19 @@ const knex = require("../db/knex.js");
 module.exports = {
   // CHANGE ME TO AN ACTUAL FUNCTION
   index: function(req, res) {
+
   res.redirect('/pokemon');
   },
 
   allPokemon: function(req, res){
-    knex('pokemon')
+    if(!req.session.gym){
+      req.session.gym = [];
+    }
 
+    knex('pokemon')
+      .orderBy('id')
       .then((result)=>{
-        res.render('pokemon', {pokemonList: result});
+        res.render('pokemon', {pokemonList: result, gym: req.session.gym});
       })
   },
 
@@ -61,7 +66,7 @@ module.exports = {
               }
 
             }
-            console.log(currentTrainer);
+            //console.log(currentTrainer);
           res.render('update', {poke: result[0], trainer: trainerResult, current: currentTrainer[0]});
           })
       });
@@ -71,7 +76,7 @@ module.exports = {
     knex('pokemon')
       .where('id', req.params.id)
       .then((result)=>{
-        console.log(result);
+        //console.log(result);
         knex('trainers')
           .where('id', result[0].trainer_id)
           .then((trainerResult)=>{
@@ -95,6 +100,44 @@ module.exports = {
       res.redirect('/');
     })
   },
+
+  addToGym: function(req, res){
+    knex('pokemon')
+      .where('id', req.params.id)
+      .update({
+        in_gym: 'true'
+      })
+      .then(()=>{
+        req.session.gym.push(req.params.id);
+        req.session.save(()=>{
+          res.redirect('/pokemon');
+
+        })
+
+
+      })
+  },
+
+  removeFromGym: function(req, res){
+
+    var gym = req.session.gym;
+    for(let i =0; i <gym.length; i++){
+      if(gym[i] ===  req.params.id){
+        gym.splice(i,1);
+      }
+    }
+
+    knex('pokemon')
+      .where('id', req.params.id)
+      .update({
+        in_gym: 'false'
+      })
+      .then(()=>{
+        req.session.save(()=>{
+          res.redirect('/pokemon');
+        })
+      })
+  }
 
 
 

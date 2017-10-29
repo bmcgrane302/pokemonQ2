@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+
+    <h1><%= trainer.name %></h1>
+    <ul>
+      <h3><%= trainer.name %>&#39s pokemon</h3>
+      <% for(let i = 0; i < poke.length; i++){
+        if(trainer.id === poke[i].trainer_id){%>
+        <li><%= poke[i].name %></li>
+      <% } %>
+      <% } %>
+    </ul>
+
+  </body>
+</html>
